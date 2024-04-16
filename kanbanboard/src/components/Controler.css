@@ -1,0 +1,25 @@
+.maincontainer {
+    background-color: slategrey;
+}
+
+
+.upContainer {
+    display: flex;
+    flex-direction: column;
+    width: screen;
+    height: 70px;
+}
+
+.forminput{
+    margin-right: 20px;
+    margin-top: 10px;
+    
+}
+
+h1 {
+    margin-left: 50%;
+}
+
+button {
+    margin-right: 10px;
+}

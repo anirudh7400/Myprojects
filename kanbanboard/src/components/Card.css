@@ -1,0 +1,14 @@
+.card{
+  background-color: darkgray;
+  width: 200px;
+}
+.boardheading {
+width: 100%;
+background-color: gold;
+text-align: center;
+}
+
+.boardtext {
+  text-align: center;
+
+}

@@ -1,0 +1,35 @@
+.Explore {
+    height: 100vh;
+    display: flex;
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 10px;
+  }
+
+  .exploreMid {
+    flex: 0.4;
+    border-right: 1px solid var(--twitter-background);
+    min-width: fit-content;
+    overflow-y: scroll;
+  }
+
+  
+  
+  .exploreMid::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .exploreMid {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .explore__header {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 100;
+    border: 1px solid var(--twitter-background);
+    padding: 15px 20px;
+  }

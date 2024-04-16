@@ -1,0 +1,60 @@
+.container{
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.left{
+    flex: 0.55;
+}
+
+.right {
+    flex: 0.45;
+}
+
+.image{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+h1 {
+    font-size: 5em;
+    margin-top: 50px;
+    
+  }
+  
+  h2 {
+    margin-top: 20px;
+    font-size: 2em;
+  }
+
+
+  .signup {
+    background-color: #2F99F2 !important;
+    border: none !important;
+    color: white !important;
+    font-weight: 900 !important;
+    text-transform: inherit !important;
+    border-radius: 30px !important;
+    height: 50px !important;
+    margin-top: 20px !important;
+    width: 40% !important;
+  }
+
+  .signin{
+    border-width: 2px !important;
+    background-color: white !important; 
+    border-color: var(--twitter-background) !important;
+    font-weight: 900 !important;
+    text-transform: inherit !important;
+    border-radius: 30px !important;
+    height: 50px !important;
+    margin-top: 20px !important;
+    width: 40% !important;
+
+  }
+
+  h4{
+    margin-top: 20px;
+  }

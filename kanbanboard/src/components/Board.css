@@ -1,0 +1,12 @@
+.cards{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.downmain{
+    width: screen;
+    height: 100vh;
+    background-color: lightgray;
+    overflow: hidden;
+}
