@@ -28,7 +28,8 @@ const Login = () => {
       axios.get('http://localhost:8080/getUser/'+ userData.email +'/'+ userData.password).then(
         (resp) => {
           if(resp.status == 200){
-            navigate('/Home' , {state: {email: userData.email}})
+            navigate('/Home') 
+            localStorage.setItem("email",JSON.stringify(userData.email))
             toast.success("Login successful !!")       
           }
                 

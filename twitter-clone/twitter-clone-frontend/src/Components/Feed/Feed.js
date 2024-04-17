@@ -11,7 +11,7 @@ export const Context2 = createContext();
 
 function Feed() {
 
-    const email = useContext(Context)
+    const email = useContext(Context) 
     const [posts, setPosts] = useState([]);
     const [dataVar1,setDataVar1] = useState(0);
     const[dataVar2,setDataVar2] = useState(0);

@@ -22,6 +22,7 @@ function Sidebar() {
 
    const handleClick = (e) =>{
 
+      localStorage.removeItem("email")
       toast.success("Logout successful !!")
       navigate('/')
    }
@@ -34,7 +35,7 @@ function Sidebar() {
            <XIcon
               className = "sidebar__twitterIcon"                
            /> 
-           <SidebarOption active
+           <SidebarOption 
               Icon = {HomeIcon}
               text = "Home"  
            />

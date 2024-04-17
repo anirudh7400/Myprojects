@@ -16,7 +16,7 @@ import {Context2} from '../Feed/Feed'
 
 const Post = ( {username, text, avatar}) =>{
 
-    const[dataVar2,setDataVar2] = useContext(Context2)
+    const[dataVar2,setDataVar2] = useContext(Context2) 
 
 
     const[tweetData,setTweetData] = useState({
@@ -28,7 +28,7 @@ const Post = ( {username, text, avatar}) =>{
 
     const handleClick = (e) => {
 
-
+ 
 
         axios.delete('http://localhost:8080/deleteTweet/' + email , {data: tweetData }).then(
             (resp) => {

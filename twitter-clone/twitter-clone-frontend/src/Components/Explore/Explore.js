@@ -18,6 +18,7 @@ const Explore = () => {
       <Widgets />
 
     </div>
+    
   )
 }
 

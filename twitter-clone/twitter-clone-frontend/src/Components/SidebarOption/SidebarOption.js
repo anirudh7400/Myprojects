@@ -1,16 +1,19 @@
 import React from 'react'
 import './SidebarOption.css'
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useContext } from 'react'
 import { useNavigate } from 'react-router'
+import { useLocation } from 'react-router'
+import {Context} from '../Home/Home'     
 
 
 function SidebarOption({ text, Icon }) {
 
     const navigate = useNavigate();
+    const email2 = useContext(Context)
 
     const handleClick = (e) =>{
         if(refOne.current.contains(e.target)){
-            navigate('/'+text)
+            navigate('/'+text, {state: {email1: email2}}) 
         }
         else{
             console.log("error")
