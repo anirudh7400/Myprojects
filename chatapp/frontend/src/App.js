@@ -1,13 +1,20 @@
-import Home from "./components/home/Home";
-import Signup from "./components/signup/Signup";
-import "./App.css"
+import {createBrowserRouter, RouterProvider } from 'react-router-dom';
+import "./App.css";
 import React from 'react';
-import Login from "./components/login/Login";
-import Chat from "./components/chat/Chat";
+import Routes from './components/routes/routes'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const router = createBrowserRouter(Routes);
 
 function App() {
+
   return (
-    <Chat />
+    <div >
+      <ToastContainer  position='top-center'/>
+      <RouterProvider router={router} />
+    </div>
+    
   );
 }
 
