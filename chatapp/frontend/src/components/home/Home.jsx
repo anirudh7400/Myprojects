@@ -8,7 +8,6 @@ const Home = () => {
 
     const handleSignUp = (e) =>{
         navigate("/signup");
-            <NavLink to="/signup" />
         
     }
 

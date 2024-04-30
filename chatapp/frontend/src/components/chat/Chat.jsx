@@ -2,7 +2,7 @@ import React from 'react'
 import Bgimage from '../../assets/bgimage.jpg'
 import Leftsidebar from './Leftsidebar'
 import CenterChatbox from './CenterChatbox'
-import Rightsidebar from './Rightsidebar'
+import Rightsidebar from './Rightsidebar' 
 
 const Chat = () => {
   return (

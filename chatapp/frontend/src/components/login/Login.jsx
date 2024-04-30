@@ -1,11 +1,13 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { useState, useEffect } from "react";
+import { useNavigate } from 'react-router';
 import {toast} from 'react-toastify';
+import axios from "axios";
 
-const Login = () => {
+const Login = () => { 
 
-
+  const navigate = useNavigate();
   const [data,setData] = useState({
     email: '',
     password: ''
@@ -49,12 +51,24 @@ const Login = () => {
     setIsSubmit(true);
   }
 
+  const signIn = () => {
+    axios.post('http://localhost:4000/login',data).then(() => {
+      toast.success("Login successfull !!!")
+      navigate("/chat");
+    }).catch((err) => {
+      toast.error(err.response.data.error)
+      setData({
+        email: '',
+        password: ''
+      })
+    })  
+  }
+
   useEffect( () => {
 
     //console.log(formError)
     if(Object.keys(formError).length === 0 && isSubmit){
-      //signIn(data)
-      console.log("form validated");
+      signIn()
     }
     else{
       setIsSubmit(false)
