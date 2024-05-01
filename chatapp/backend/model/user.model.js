@@ -2,12 +2,18 @@ import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 
 const uerSchema = mongoose.Schema({
-    userName : {
+  firstName : {
         type : String,
         required: true,
         trim: true,
-        unique: true,
+        index: true,
     },
+    lastName : {
+      type : String,
+      required: true,
+      trim: true,
+      index: true,
+  },
     email : {
         type : String,
         required: true,
@@ -18,7 +24,15 @@ const uerSchema = mongoose.Schema({
         type : String,
         required: true,
         trim: true,
-    }
+    },
+    friends: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User' // Reference to the User model
+  }],
+  image: {
+    type: String,
+    default: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw4UeEjjERyEVTOIaXIKHlj7snPZAKulH5-z1Kau1lsw&s' // Default image URL
+},
 });
 
 uerSchema.pre('save' , async function(next) {

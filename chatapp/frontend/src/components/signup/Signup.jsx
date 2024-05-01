@@ -9,7 +9,8 @@ const Signup = () => {
   const navigate = useNavigate();
   const [data,setData] = useState({
 
-    userName: '',
+    firstName: '',
+    lastName: '',
     email: '',
     password: ''
 
@@ -26,7 +27,11 @@ const Signup = () => {
     const error = {}
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
 
-    if(!values.userName){
+    if(!values.firstName){
+      error.userName = "Username is Required !!";
+    }
+
+    if(!values.lastName){
       error.userName = "Username is Required !!";
     }
     
@@ -53,7 +58,7 @@ const Signup = () => {
   const signUp = async () => {
     await axios.post('http://localhost:4000/addUser', data).then((res) => { 
       toast.success("registration successfull !!!")
-      navigate("/chat");
+      navigate("/login");
      // console.log(res);
     }).catch((err) => {
       toast.error(err.response.data.error)
@@ -104,9 +109,16 @@ const Signup = () => {
           <div className="mt-[50px] flex flex-col">
          
           <div className="flex mt-[10px] ">
-            <label className="  font-sans font-medium mr-[30px] ml-[40px] text-gray-600 text-sm transition-all ">Username</label>
-            <input type="text" className="bg-white w-[250px] px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500  placeholder:text-slate-400" placeholder= "username"
-                 onChange={(e) => handleChange(e,'userName')} value={data.userName} />
+            <label className="  font-sans font-medium mr-[30px] ml-[40px] text-gray-600 text-sm transition-all ">First Name</label>
+            <input type="text" className="bg-white w-[250px] px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500  placeholder:text-slate-400" placeholder= "firstname"
+                 onChange={(e) => handleChange(e,'firstName')} value={data.firstName} />
+  
+          </div>
+
+          <div className="flex mt-[10px] ">
+            <label className="  font-sans font-medium mr-[30px] ml-[40px] text-gray-600 text-sm transition-all ">Last Name</label>
+            <input type="text" className="bg-white w-[250px] px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500  placeholder:text-slate-400" placeholder= "lastname"
+                 onChange={(e) => handleChange(e,'lastName')} value={data.lastName} />
   
           </div>
           
@@ -134,8 +146,7 @@ const Signup = () => {
               <NavLink to="/login">Login</NavLink>
           </div>
       
-          <p className="text-sm font-sans font-medium text-slate-400	mt-[20px]	 text-center">or</p>
-          <button className="mt-[30px] h-[50px] w-[300px] bg-slate-700 rounded-lg text-white  font-sans font-medium ml-[75px]">Google login</button>
+
           </div>
       
     </div>

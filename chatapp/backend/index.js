@@ -21,15 +21,15 @@ app.post('/login' , async (req,res) => {
             throw new Error("Email not found.");
         }
 
-        console.log(userExists);
+       // console.log(userExists);
         
         const isMatch = await userExists.comparePassword(password);
 
         if (!isMatch) {
             throw new Error("Invalid password.");
         }
-
-        res.status(200).json({message: "Login Successfull !"});
+        const finalUser = await User.findOne({email});
+        res.status(200).json(finalUser);
 
         
     } catch (error) {
@@ -49,16 +49,8 @@ app.post('/login' , async (req,res) => {
 app.post('/addUser' , async (req,res) => {
 
     try {
-
-        const { userName, email, password } = req.body;
-
-        const existingUser = await User.findOne({ userName });
+        const {  email } = req.body;
         const existingEmail = await User.findOne({ email });
-
-        if (existingUser) {
-            // If the username already exists, throw a custom error
-            throw new Error('Username already exists');
-        }
 
         if(existingEmail) {
             throw new Error('Email already exists');
@@ -66,14 +58,10 @@ app.post('/addUser' , async (req,res) => {
 
         const user = new User(req.body);
         const addeduser = await user.save();
-      //  console.log("user added successfully");
         res.status(200).json(addeduser);
 
     } catch (error) {
-        if (error.message === 'Username already exists') {
-            res.status(400).json({ error: 'Username already exists.' });
-        }
-        else if(error.message === 'Email already exists'){
+        if(error.message === 'Email already exists'){
             res.status(400).json({ error: 'Email already exists.' });
         }
         else {
@@ -103,7 +91,28 @@ app.put('/updateUser/:id' , async (req,res) => {
     }
 })
 
-mongoose.connect(`${process.env.MONGODB_URI}/user`).then(() => {
+app.get('/api/search' , async (req,res) => {
+
+        try {
+            const {q} = req.query;
+        //console.log(q);
+        const users = await User.find({
+            $or: [
+              { firstName: { $regex: new RegExp(q, 'i') } }, // Search in firstName
+              { lastName: { $regex: new RegExp(q, 'i') } }    // Search in lastName
+            ]
+          });
+
+            res.status(200).json(users);       
+        
+        } catch (error) {
+            res.status(500).json(error.message);
+        }
+
+        
+});
+
+mongoose.connect(`${process.env.MONGODB_URI}/MyDb`).then(() => {
     console.log("db connected");
     app.listen(process.env.PORT, () =>{
         console.log(`litening on port ${process.env.PORT}`);

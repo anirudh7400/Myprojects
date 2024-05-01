@@ -14,6 +14,8 @@ const Login = () => {
 
   })
 
+ 
+
   const [formError,setFormError] = useState({})
   const [isSubmit,setIsSubmit] = useState(false)
 
@@ -52,9 +54,11 @@ const Login = () => {
   }
 
   const signIn = () => {
-    axios.post('http://localhost:4000/login',data).then(() => {
+    axios.post('http://localhost:4000/login',data).then((res) => {
       toast.success("Login successfull !!!")
-      navigate("/chat");
+      //console.log(res);
+      const sendData = res.data;
+      navigate("/chat" , {state :{ sendData}});
     }).catch((err) => {
       toast.error(err.response.data.error)
       setData({
@@ -90,7 +94,7 @@ const Login = () => {
 
   return (
     <div className = " bg-[#F7F7F7]  h-screen flex justify-center items-center  ">
-      <div className=" bg-[#FFFFFF] h-[500px] w-[450px] rounded-2xl shadow-xl ">
+      <div className=" bg-[#FFFFFF] h-[400px] w-[450px] rounded-2xl shadow-xl ">
 
           <div className="mt-[30px]">
             <div className="text-3xl font-sans font-bold text-slate-700		 text-center">Login</div>
@@ -118,8 +122,7 @@ const Login = () => {
               <NavLink to="/signup">Sign Up</NavLink>
           </div>
       
-          <p className="text-sm font-sans font-medium text-slate-400	mt-[20px]	 text-center">or</p>
-          <button className="mt-[30px] h-[40px] w-[250px] bg-slate-700 rounded-lg text-white  font-sans font-medium ml-[95px]">Google login</button>
+       
           </div>
       
     </div>

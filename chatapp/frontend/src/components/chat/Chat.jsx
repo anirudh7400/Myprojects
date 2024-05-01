@@ -3,8 +3,13 @@ import Bgimage from '../../assets/bgimage.jpg'
 import Leftsidebar from './Leftsidebar'
 import CenterChatbox from './CenterChatbox'
 import Rightsidebar from './Rightsidebar' 
+import { useLocation } from 'react-router-dom'
 
 const Chat = () => {
+
+  const data = useLocation();
+  console.log(data);
+
   return (
 
     <div className='relative h-screen bg-blue-400'>
